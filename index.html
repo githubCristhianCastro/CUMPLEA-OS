@@ -49,7 +49,42 @@
         src="HB.mp3" type="audio/mpeg" >
 
     </audio>
+    <!-- Librería de confeti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
+<script>
+// Confeti automático al abrir la página
+window.onload = function() {
+    confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+
+    // Confeti continuo por unos segundos
+    let duration = 5 * 1000;
+    let end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 5,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+        confetti({
+            particleCount: 5,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
+}
+</script>
 
     <script src="script.js"></script>
 </body>
